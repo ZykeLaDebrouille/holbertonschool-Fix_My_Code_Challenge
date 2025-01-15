@@ -22,6 +22,7 @@ if (isNaN(size) || size <= 0) {
     process.exit(1);
 }
 
+// Ensure the square is printed correctly
 for (let i = 0 ; i < size ; i ++) {
     for (let j = 0 ; j < size ; j ++) {
         process.stdout.write("#");
