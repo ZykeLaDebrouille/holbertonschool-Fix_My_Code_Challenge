@@ -43,11 +43,21 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	else
 	{
-		(*head)->prev->prev = (*head)->prev;
-		free(*head);
-		if ((*head)->next)
-			(*head)->next->prev = (*head)->prev;
-		*head = saved_head;
+		if ((*head)->prev) /** Check if the previous node exists */
+			(*head)->prev->next = (*head)->next; /*Update the next pointer of the prev node*/
+		if ((*head)->next) /*Check if the next node exists*/
+			(*head)->next->prev = (*head)->prev; /*Update the prev pointer of the next node*/
+		free(*head); /*free the head node*/
+		*head = saved_head; /*reinitialise head to the saved head*/
 	}
+	/** else  // version that doesn't work
+	* {
+	* 	(*head)->prev->prev = (*head)->prev;
+	* 	free(*head);
+	* 	if ((*head)->next)
+	* 		(*head)->next->prev = (*head)->next;
+	* 	*head = saved_head;
+	* }
+	*/
 	return (1);
 }
