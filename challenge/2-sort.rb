@@ -1,6 +1,6 @@
 ###
 #
-#  Sort integer arguments (ascending) 
+#  Sort integer arguments (descending) 
 #
 ###
 
@@ -17,15 +17,15 @@ ARGV.each do |arg|
     i = 0
     l = result.size
     while !is_inserted && i < l do
-        if result[i] < i_arg
+        if result[i] > i_arg
             i += 1
         else
-            result.insert(i, i_arg)  # insert i and not i-1 to ensure correct order
+            result.insert(i, i_arg)  # Insert at the found position
             is_inserted = true
             break
         end
     end
-    result << i_arg if !is_inserted
+    result << i_arg if !is_inserted  # Add to the end if not inserted
 end
 
 puts result

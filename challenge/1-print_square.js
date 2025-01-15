@@ -14,7 +14,13 @@ if (process.argv.length <= 2) {
     process.exit(1)
 }
 
-size = parseInt(process.argv[2], 16)
+size = parseInt(process.argv[2]);
+
+if (isNaN(size) || size <= 0) {
+    process.stderr.write("Invalid size\n");
+    process.stderr.write("Usage: ./1-print_square.js <size> (size must be a positive integer)\n");
+    process.exit(1);
+}
 
 for (let i = 0 ; i < size ; i ++) {
     for (let j = 0 ; j < size ; j ++) {
